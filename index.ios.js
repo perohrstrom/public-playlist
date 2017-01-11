@@ -15,7 +15,7 @@ export default class PublicPlaylist extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Main />
+        <VisibleApp />
       </Provider>
     );
   }

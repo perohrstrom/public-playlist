@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
 
-const indexReducer = combineReducers({ })
+const indexReducer = combineReducers({ trackSearchForm })
 
 export default indexReducer
