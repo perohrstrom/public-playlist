@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
+import {
+  TextInput
+} from 'react-native';
 
-class Main extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: props.newSearchForm
-    }
+var styles = require('./style')
+
+export default class Main extends Component {
+  constructor() {
+    super();
     this.handleChange = this.handleChange.bind(this);
-    this.handlePress = this.handlePress.bind(this);
   }
 
   handleChange(text){
@@ -15,13 +16,17 @@ class Main extends React.Component {
   }
 
   render(){
-    return {
-      <TextInput
-        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+    console.log(this.props)
+    return (<TextInput
+        style={{
+          height: 40,
+          borderColor: 'gray',
+          borderWidth: 1
+        }}
         onChangeText={this.handleChange}
-        value={this.state.text}
+        value={this.props.newSearchForm}
       />
-    }
+    )
   }
 }
 

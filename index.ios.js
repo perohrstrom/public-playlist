@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { Provider } from 'react-redux';
 import configureStore from './src/app/store/createStore'
-import Main from './src/app/components/Main'
+import VisibleApp from './src/app/containers/VisibleApp'
 
 let store = configureStore()
 
