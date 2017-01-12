@@ -5,3 +5,12 @@ export const handleChange = (text) => {
     payload: text.toUpperCase()
   }
 }
+
+export const UPDATE_SEARCH_RESULTS = 'UPDATE_SEARCH_RESULTS'
+export const updateSearchResults = (array) => {
+  debugger
+  return {
+    type: UPDATE_SEARCH_RESULTS,
+    payload: array
+  }
+}
