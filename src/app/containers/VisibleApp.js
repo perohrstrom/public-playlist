@@ -18,6 +18,4 @@ function dispatchToProps(dispatch) {
   return bindActionCreators(actionCreators, dispatch)
 }
 
-const VisibleApp = connect(mapStateToProps, mapDispatchToProps)(Songsearch)
-
-export default VisibleApp
+export default connect(mapStateToProps, dispatchToProps)(Songsearch)

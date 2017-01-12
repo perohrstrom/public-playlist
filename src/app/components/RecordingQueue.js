@@ -10,7 +10,7 @@ export default class RecordingQueue extends Component {
   }
 
   render(){
-    console.log(this.props)
+    console.log("i'm in the RecordingQueue", this.props)
     return(
       <View>
         <Text>Go Back to Search Results</Text>

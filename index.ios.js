@@ -34,7 +34,7 @@ export default class PublicPlaylist extends Component {
       <Provider store={store}>
         <RouterWithRedux>
           <Scene key="root">
-            <Scene key="songsearch" component={VisibleApp} title="Search for a Song" initial={true} />
+            <Scene key="songsearch" component={Songsearch} title="Search for a Song" initial={true} />
             <Scene key="recordingqueue" component={RecordingQueue} title="Add to Playlist"/>
           </Scene>
         </RouterWithRedux>

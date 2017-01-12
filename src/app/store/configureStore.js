@@ -14,5 +14,5 @@ export default function configureStore(intialState){
   const enhancer = compose(
     applyMiddleware(thunk, logger)
   )
-  return createStore(indexReducer, intialState)
+  return createStore(indexReducer, intialState, enhancer)
 }
