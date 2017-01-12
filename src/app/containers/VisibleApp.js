@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 import * as actionCreators from '../actions/index'
-import Main from '../components/Main'
+import AppRouter from '../components/AppRouter'
 
 const mapStateToProps = (state) => {
   return {
@@ -18,6 +18,6 @@ function dispatchToProps(dispatch) {
   return bindActionCreators(actionCreators, dispatch)
 }
 
-const VisibleApp = connect(mapStateToProps, mapDispatchToProps)(Main)
+const VisibleApp = connect(mapStateToProps, mapDispatchToProps)(AppRouter)
 
 export default VisibleApp

@@ -5,17 +5,14 @@ import {
   ListView,
   Text
 } from 'react-native';
-import searchSpotify from '../helpers/spotify'
+import { connect } from 'react-redux';
 import Recording from './Recording'
 
-var styles = require('./style')
-
-export default class Main extends Component {
+class Songsearch extends Component {
   constructor() {
     super();
     this.handleChange = this.handleChange.bind(this);
     this.searchSpotify = this.searchSpotify.bind(this);
-    this.addToPlaylist = this.addToPlaylist.bind(this);
   }
 
   handleChange(text){
@@ -34,15 +31,13 @@ export default class Main extends Component {
       })
   }
 
-  addToPlaylist(){
 
-  }
 
   render(){
-    console.log(this.props)
-    const { searchResults } = this.props
-    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-    const dataSource = ds.cloneWithRows(searchResults)
+    console.log("these are my props",this.props)
+//    const { searchResults } = this.props
+    // const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+//    const dataSource = ds.cloneWithRows(searchResults)
     return (<View>
       <TextInput
         style={{
@@ -53,16 +48,18 @@ export default class Main extends Component {
         onChangeText={this.handleChange}
         value={this.props.newSearchForm}
       />
-      <ListView
-        contentContainerStyler={styles.container}
-        enableEmptySections
-        dataSource={dataSource}
-        renderRow={(data) => <Recording addToPlaylist={this.props.addToPlaylist} {...data} /> }
-        renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-      />
+      <Text>This is my {this.props.routes.scene.title}</Text>
     </View>
   )}
 }
 
+export default connect(({routes}) => ({routes}))(Songsearch);
 
-module.exports = Main
+//<ListView
+//   contentContainerStyler={styles.container}
+//   enableEmptySections
+//   dataSource={dataSource}
+//   renderRow={(data) => <Recording {...data} /> }
+//   renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+//   automaticallyAdjustContentInsets={true}
+// />

@@ -30,7 +30,7 @@ export default class Recording extends Component {
     const { artist, album, trackName, image } = this.state
     return(
       <View style={styles.container}>
-        <TouchableHighlight onPress={this.playTrack}>
+        <TouchableHighlight onPress={this.props.navRecordingQueue}>
         <View style={styles.albumText}>
           <Image  source={{uri: image.url}} style={styles.albumCover} />
           <Text style={styles.recordText}>{trackName} by {artist}</Text>
