@@ -10,8 +10,9 @@ export default class RecordingQueue extends Component {
   }
 
   render(){
+    console.log(this.props)
     return(
-      <View style={styles.container}>
+      <View>
         <Text>Go Back to Search Results</Text>
       </View>
     )

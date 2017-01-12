@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 import * as actionCreators from '../actions/index'
-import AppRouter from '../components/AppRouter'
+import Songsearch from '../components/Songsearch'
 
 const mapStateToProps = (state) => {
   return {
@@ -18,6 +18,6 @@ function dispatchToProps(dispatch) {
   return bindActionCreators(actionCreators, dispatch)
 }
 
-const VisibleApp = connect(mapStateToProps, mapDispatchToProps)(AppRouter)
+const VisibleApp = connect(mapStateToProps, mapDispatchToProps)(Songsearch)
 
 export default VisibleApp

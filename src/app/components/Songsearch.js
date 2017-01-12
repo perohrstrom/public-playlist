@@ -6,7 +6,8 @@ import {
   Text
 } from 'react-native';
 import { connect } from 'react-redux';
-import Recording from './Recording'
+import Recording from './Recording';
+import Styles from './style'
 
 class Songsearch extends Component {
   constructor() {
@@ -31,13 +32,11 @@ class Songsearch extends Component {
       })
   }
 
-
-
   render(){
-    console.log("these are my props",this.props)
-//    const { searchResults } = this.props
-    // const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-//    const dataSource = ds.cloneWithRows(searchResults)
+  console.log("these are my props",this.props)
+   const { searchResults } = this.props
+   const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+   const dataSource = ds.cloneWithRows(searchResults)
     return (<View>
       <TextInput
         style={{
@@ -49,17 +48,15 @@ class Songsearch extends Component {
         value={this.props.newSearchForm}
       />
       <Text>This is my {this.props.routes.scene.title}</Text>
+      <ListView
+        enableEmptySections
+        dataSource={dataSource}
+        renderRow={(data) => <Recording {...data} /> }
+        renderSeparator={(sectionId, rowId) => <View key={rowId}  />}
+        automaticallyAdjustContentInsets={true}
+      />
     </View>
   )}
 }
 
 export default connect(({routes}) => ({routes}))(Songsearch);
-
-//<ListView
-//   contentContainerStyler={styles.container}
-//   enableEmptySections
-//   dataSource={dataSource}
-//   renderRow={(data) => <Recording {...data} /> }
-//   renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-//   automaticallyAdjustContentInsets={true}
-// />
