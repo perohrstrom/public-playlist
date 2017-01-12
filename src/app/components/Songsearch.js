@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
+import { StyleSheet } from 'react-native'
 import {
   TextInput,
   View,
-  ListView
+  ListView,
+  Text
 } from 'react-native';
-import searchSpotify from '../helpers/spotify'
+import { connect } from 'react-redux';
+import Recording from './Recording';
 
-var styles = require('./style')
-
-export default class Main extends Component {
+class Songsearch extends Component {
   constructor() {
     super();
     this.handleChange = this.handleChange.bind(this);
@@ -32,10 +33,10 @@ export default class Main extends Component {
   }
 
   render(){
-    console.log(this.props)
-    const { searchResults } = this.props
-    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-    const dataSource = ds.cloneWithRows(searchResults)
+  console.log("Songsearch this",this.props)
+   const { searchResults } = this.props
+   const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+   const dataSource = ds.cloneWithRows(searchResults)
     return (<View>
       <TextInput
         style={{
@@ -46,16 +47,31 @@ export default class Main extends Component {
         onChangeText={this.handleChange}
         value={this.props.newSearchForm}
       />
+      <Text>This is my {this.props.routes.scene.title}</Text>
       <ListView
         contentContainerStyler={styles.container}
         enableEmptySections
         dataSource={dataSource}
-        renderRow={(data) => <Artist artistSearch={this.props.artistSearch} {...data} /> }
+        renderRow={(data) => <Recording {...data} /> }
         renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+        automaticallyAdjustContentInsets={true}
       />
     </View>
   )}
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  separator: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+});
 
-module.exports = Main
+export default connect(({routes}) => ({routes}))(Songsearch);
