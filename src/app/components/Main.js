@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import {
   TextInput,
   View,
-  ListView
+  ListView,
+  Text
 } from 'react-native';
 import searchSpotify from '../helpers/spotify'
+import Recording from './Recording'
 
 var styles = require('./style')
 
@@ -13,6 +15,7 @@ export default class Main extends Component {
     super();
     this.handleChange = this.handleChange.bind(this);
     this.searchSpotify = this.searchSpotify.bind(this);
+    this.addToPlaylist = this.addToPlaylist.bind(this);
   }
 
   handleChange(text){
@@ -29,6 +32,10 @@ export default class Main extends Component {
       .then((json) => {
         this.props.updateSearchResults(json.tracks.items)
       })
+  }
+
+  addToPlaylist(){
+
   }
 
   render(){
@@ -50,7 +57,7 @@ export default class Main extends Component {
         contentContainerStyler={styles.container}
         enableEmptySections
         dataSource={dataSource}
-        renderRow={(data) => <Artist artistSearch={this.props.artistSearch} {...data} /> }
+        renderRow={(data) => <Recording addToPlaylist={this.props.addToPlaylist} {...data} /> }
         renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
       />
     </View>
